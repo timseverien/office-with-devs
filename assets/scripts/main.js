@@ -106,24 +106,25 @@ const sounds = {
     }),
 };
 
+const buttonStart = document.getElementById('button-start');
 const elementDebug = document.getElementById('debug');
 
-window.addEventListener('click', () => {
+buttonStart.addEventListener('click', () => {
+    buttonStart.hidden = true;
+
     setInterval(() => {
         sounds.keyboard.trySchedule();
         sounds.mouse.trySchedule();
         sounds.people.trySchedule();
         sounds.peopleActions.trySchedule();
 
-        elementDebug.innerText = `
-keyboard
+        elementDebug.innerText = `keyboard
   count: ${sounds.keyboard.getPlayCount()}
 mouse
   count: ${sounds.mouse.getPlayCount()}
 people
   count: ${sounds.people.getPlayCount()}
 people actions
-  count: ${sounds.peopleActions.getPlayCount()}
-`;
+  count: ${sounds.peopleActions.getPlayCount()}`;
     }, 250);
 }, { once: true });
